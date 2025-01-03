@@ -16,9 +16,9 @@ go_library(
         "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm:go_default_library",
         "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/internal:go_default_library",
         "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
-        "@com_github_tetratelabs_wazero//:go_default_library",
-        "@com_github_tetratelabs_wazero//api:go_default_library",
-        "@com_github_tetratelabs_wazero//imports/wasi_snapshot_preview1:go_default_library",
+        "@com_github_tetratelabs_wazero//:wazero",
+        "@com_github_tetratelabs_wazero//api",
+        "@com_github_tetratelabs_wazero//imports/wasi_snapshot_preview1",
     ],
 )
 
@@ -33,6 +33,6 @@ go_test(
         "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm:go_default_library",
         "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/internal:go_default_library",
         "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
-        "@com_github_stretchr_testify//require:go_default_library",
+        "@com_github_stretchr_testify//require",
     ],
 )
