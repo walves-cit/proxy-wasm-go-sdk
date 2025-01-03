@@ -1,0 +1,47 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "internal",
+    srcs = [
+        "abi_callback_alloc.go",
+        "abi_callback_configuration.go",
+        "abi_callback_l4.go",
+        "abi_callback_l7.go",
+        "abi_callback_lifecycle.go",
+        "abi_callback_queue.go",
+        "abi_callback_test_export.go",
+        "abi_callback_timers.go",
+        "abi_callback_version.go",
+        "abi_enums.go",
+        "abi_hostcalls.go",
+        "abi_hostcalls_mock.go",
+        "hostcall_utils.go",
+        "serde.go",
+        "timing_off.go",
+        "vmstate.go",
+        "vmstate_test_export.go",
+    ],
+    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/proxywasm/internal",
+    visibility = ["//proxywasm:__subpackages__"],
+    deps = ["@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library"],
+)
+
+go_test(
+    name = "internal_test",
+    srcs = [
+        "abi_callback_configuration_test.go",
+        "abi_callback_l4_test.go",
+        "abi_callback_l7_test.go",
+        "abi_callback_lifecycle_test.go",
+        "abi_callback_queue_test.go",
+        "abi_callback_timers_test.go",
+        "hostcall_utils_test.go",
+        "serde_test.go",
+        "vmstate_test.go",
+    ],
+    embed = [":internal"],
+    deps = [
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+        "@com_github_stretchr_testify//require:go_default_library",
+    ],
+)

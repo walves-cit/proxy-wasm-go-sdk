@@ -1,0 +1,38 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "proxytest",
+    srcs = [
+        "http.go",
+        "network.go",
+        "option.go",
+        "proxytest.go",
+        "root.go",
+        "wasmwrapper.go",
+    ],
+    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/proxywasm/proxytest",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm:go_default_library",
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/internal:go_default_library",
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+        "@com_github_tetratelabs_wazero//:go_default_library",
+        "@com_github_tetratelabs_wazero//api:go_default_library",
+        "@com_github_tetratelabs_wazero//imports/wasi_snapshot_preview1:go_default_library",
+    ],
+)
+
+go_test(
+    name = "proxytest_test",
+    srcs = [
+        "http_test.go",
+        "timing_off_test.go",
+    ],
+    embed = [":proxytest"],
+    deps = [
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm:go_default_library",
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/internal:go_default_library",
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+        "@com_github_stretchr_testify//require:go_default_library",
+    ],
+)

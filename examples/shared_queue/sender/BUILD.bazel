@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "sender_lib",
+    srcs = ["main.go"],
+    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/examples/shared_queue/sender",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm:go_default_library",
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "sender",
+    embed = [":sender_lib"],
+    visibility = ["//visibility:public"],
+)

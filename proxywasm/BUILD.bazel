@@ -1,0 +1,25 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "proxywasm",
+    srcs = [
+        "entrypoint.go",
+        "hostcall.go",
+    ],
+    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/proxywasm",
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/internal:go_default_library",
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+    ],
+)
+
+go_test(
+    name = "proxywasm_test",
+    srcs = ["hostcall_test.go"],
+    embed = [":proxywasm"],
+    deps = [
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/internal:go_default_library",
+        "@com_github_stretchr_testify//require:go_default_library",
+    ],
+)

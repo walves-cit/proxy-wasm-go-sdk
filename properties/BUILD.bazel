@@ -1,0 +1,44 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "properties",
+    srcs = [
+        "connection.go",
+        "pilot.go",
+        "properties.go",
+        "proxyconfig.go",
+        "request.go",
+        "response.go",
+        "serialization.go",
+        "types.go",
+        "upstream.go",
+        "util.go",
+        "wasm.go",
+        "xsd.go",
+    ],
+    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/properties",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm:go_default_library"],
+)
+
+go_test(
+    name = "properties_test",
+    srcs = [
+        "connection_test.go",
+        "pilot_test.go",
+        "proxyconfig_test.go",
+        "request_test.go",
+        "response_test.go",
+        "serialization_test.go",
+        "types_test.go",
+        "upstream_test.go",
+        "util_test.go",
+        "wasm_test.go",
+        "xsd_test.go",
+    ],
+    embed = [":properties"],
+    deps = [
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/proxytest:go_default_library",
+        "@com_github_stretchr_testify//require:go_default_library",
+    ],
+)

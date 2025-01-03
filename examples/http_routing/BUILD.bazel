@@ -1,0 +1,29 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
+
+go_library(
+    name = "http_routing_lib",
+    srcs = ["main.go"],
+    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/examples/http_routing",
+    visibility = ["//visibility:private"],
+    deps = [
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm:go_default_library",
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+    ],
+)
+
+go_binary(
+    name = "http_routing",
+    embed = [":http_routing_lib"],
+    visibility = ["//visibility:public"],
+)
+
+go_test(
+    name = "http_routing_test",
+    srcs = ["main_test.go"],
+    embed = [":http_routing_lib"],
+    deps = [
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/proxytest:go_default_library",
+        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+        "@com_github_stretchr_testify//require:go_default_library",
+    ],
+)
