@@ -6,6 +6,6 @@ go_library(
         "context.go",
         "types.go",
     ],
-    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/proxywasm/types",
+    importpath = "github.com/proxy-wasm/proxy-wasm-go-sdk/proxywasm/types",
     visibility = ["//visibility:public"],
 )

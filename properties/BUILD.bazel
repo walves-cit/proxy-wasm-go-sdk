@@ -16,9 +16,9 @@ go_library(
         "wasm.go",
         "xsd.go",
     ],
-    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/properties",
+    importpath = "github.com/proxy-wasm/proxy-wasm-go-sdk/properties",
     visibility = ["//visibility:public"],
-    deps = ["@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm:go_default_library"],
+    deps = ["//proxywasm"],
 )
 
 go_test(
@@ -38,7 +38,7 @@ go_test(
     ],
     embed = [":properties"],
     deps = [
-        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/proxytest:go_default_library",
+        "//proxywasm/proxytest",
         "@com_github_stretchr_testify//require",
     ],
 )

@@ -6,11 +6,11 @@ go_library(
         "entrypoint.go",
         "hostcall.go",
     ],
-    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/proxywasm",
+    importpath = "github.com/proxy-wasm/proxy-wasm-go-sdk/proxywasm",
     visibility = ["//visibility:public"],
     deps = [
-        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/internal:go_default_library",
-        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+        "//proxywasm/internal",
+        "//proxywasm/types",
     ],
 )
 
@@ -19,7 +19,7 @@ go_test(
     srcs = ["hostcall_test.go"],
     embed = [":proxywasm"],
     deps = [
-        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/internal:go_default_library",
+        "//proxywasm/internal",
         "@com_github_stretchr_testify//require",
     ],
 )

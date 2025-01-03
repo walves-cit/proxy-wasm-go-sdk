@@ -3,11 +3,11 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library", "go_test")
 go_library(
     name = "dispatch_call_on_tick_lib",
     srcs = ["main.go"],
-    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/examples/dispatch_call_on_tick",
+    importpath = "github.com/proxy-wasm/proxy-wasm-go-sdk/examples/dispatch_call_on_tick",
     visibility = ["//visibility:private"],
     deps = [
-        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm:go_default_library",
-        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+        "//proxywasm",
+        "//proxywasm/types",
     ],
 )
 
@@ -22,8 +22,8 @@ go_test(
     srcs = ["main_test.go"],
     embed = [":dispatch_call_on_tick_lib"],
     deps = [
-        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/proxytest:go_default_library",
-        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+        "//proxywasm/proxytest",
+        "//proxywasm/types",
         "@com_github_stretchr_testify//require",
     ],
 )

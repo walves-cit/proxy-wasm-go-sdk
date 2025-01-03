@@ -21,9 +21,9 @@ go_library(
         "vmstate.go",
         "vmstate_test_export.go",
     ],
-    importpath = "https:/github.com/walves-cit/proxy-wasm-go-sdk/proxywasm/internal",
+    importpath = "github.com/proxy-wasm/proxy-wasm-go-sdk/proxywasm/internal",
     visibility = ["//proxywasm:__subpackages__"],
-    deps = ["@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library"],
+    deps = ["//proxywasm/types"],
 )
 
 go_test(
@@ -41,7 +41,7 @@ go_test(
     ],
     embed = [":internal"],
     deps = [
-        "@com_github_proxy_wasm_proxy_wasm_go_sdk//proxywasm/types:go_default_library",
+        "//proxywasm/types",
         "@com_github_stretchr_testify//require",
     ],
 )
